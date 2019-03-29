@@ -16,6 +16,7 @@ class DeviceSerializer(serializers.ModelSerializer):
 			user = None
 
 		try:
+			
 			date = obj.date_register.strftime(' %d/%m/%Y %H:%M')
 		except Exception:
 			date = None
