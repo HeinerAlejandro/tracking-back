@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +50,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'devices',
     'shop',
-    'users'
+    'users',
+    'corsheaders',
 ]
 
 
@@ -65,11 +65,12 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 REST_FRAMEWORK  = { 
     'DEFAULT_AUTHENTICATION_CLASSES' : ( 
+        'rest_framework.authentication.SessionAuthentication',
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'rest_framework_social_oauth2.authentication.SocialAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication'
+       
            # django-oauth- kit de herramientas> = 1.0.0
     ), 
 }
@@ -92,6 +93,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 STATICFILES_DIRS  = [
     os.path.join(BASE_DIR, 'build/static')
@@ -176,7 +180,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 APPEND_SLASH = False    
 
-CORS_ORIGIN_ALLOW_ALL = True
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',

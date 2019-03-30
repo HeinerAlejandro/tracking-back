@@ -30,7 +30,7 @@ class DeviceSerializer(serializers.ModelSerializer):
 		}
 
 	class Meta:
-		fields = ('serial', 'typee', 'date_register', 'user', 'status', 'first_name', 'last_name')
+		fields = ('serial', 'typee', 'date_register', 'user', 'status')
 		model = Device
 
 		
